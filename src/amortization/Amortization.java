@@ -26,16 +26,18 @@ public class Amortization implements ActionListener {
 
     @SuppressWarnings("LeakingThisInConstructor")
     Amortization() {
-        frame = new JFrame("Calculator");
+        frame = new JFrame("Amortization");
         textField = new JTextField();
-        monthpay = new JButton("monthly payment");
-
+        monthpay = new JButton("Enter");
+        Lmonthpay = new JLabel("Monthly payment"); 
+        
         textField.setBounds(30, 40, 350/2, 30);
         monthpay.setBounds(30, 100, 150, 30);
-        
+        Lmonthpay.setBounds(210, 40, 150, 30);
 
         frame.add(textField);
-        frame.add(monthpay);
+        //frame.add(monthpay);
+        frame.add(Lmonthpay);
 
         frame.setLayout(null);
         frame.setVisible(true);
@@ -45,6 +47,14 @@ public class Amortization implements ActionListener {
 
         monthpay.addActionListener(this);
 
+    }
+    
+    public class test {
+        
+        
+        test(){
+            
+        }
     }
 
     @Override
