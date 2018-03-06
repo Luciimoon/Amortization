@@ -1,46 +1,41 @@
 package amortization;
 
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.text.DecimalFormat;
 
 public class Amortization implements ActionListener {
 
+    static double loanNum, monthNum, intrestRate;
+    static double CloanNum, CintRate, compoundNum, yearNum;
+    static double p, pmt, r, n, t;
     //amortization field
     JFrame frame1;
-    JPanel panel;
     JTextField textFieldm, textFieldl, textFieldapr, answer;
     JButton submit;
     JLabel Lmonths, Lloan, apr, Lmonthpay;
-
-    static double loanNum, monthNum, intrestRate;
-
+    JCheckBox convert1;
     //compound interest field
     JFrame frame2;
     JTextField textFieldloan2, textFieldintRate2, textFieldcomNum2, textFieldyear2, answer2;
     JButton submit2;
     JLabel LloanC, LintRate, LcomNum, Lyearpay;
-
-    static double CloanNum, CintRate, compoundNum, yearNum;
-
+    JCheckBox convert2;
     //future value field
-
     JFrame frame3;
     JTextField textfieldnum, textFieldintmonth, textFieldintrate, textFieldcomyears, textFieldinvest, answer3;
     JButton submit3;
     JLabel Lloan3, Lintmonth, Lintrate, Lcomyears, Linvest, finalnum;
-
-    static double p, pmt, r, n, t;
+    JCheckBox convert3;
 
 
     Amortization() {
         frame1 = new JFrame("Amortization");
         frame1.getContentPane().setBackground(Color.CYAN);
+
+        convert1 = new JCheckBox("use percent");
 
         textFieldm = new JTextField();
         Lmonths = new JLabel("Number of Months");
@@ -66,8 +61,11 @@ public class Amortization implements ActionListener {
         textFieldapr.setBounds(15, 95, 175, 30);
         apr.setBounds(195, 95, 150, 30);
 
+        convert1.setBounds(275, 95, 150, 30);
+        convert1.setBackground(Color.CYAN);
+
         submit.setBounds(15, 130, 150, 30);
-        submit.setBackground(Color.magenta);
+        submit.setBackground(Color.MAGENTA);
         answer.setBounds(15, 165, 175, 30);
         Lmonthpay.setBounds(195, 165, 175, 30);
 
@@ -80,6 +78,8 @@ public class Amortization implements ActionListener {
         frame1.add(textFieldapr);
         frame1.add(apr);
 
+        frame1.add(convert1);
+
         frame1.add(submit);
         frame1.add(answer);
         frame1.add(Lmonthpay);
@@ -87,7 +87,7 @@ public class Amortization implements ActionListener {
         frame1.setLocationRelativeTo(null);
         frame1.setLayout(null);
         frame1.setVisible(true);
-        frame1.setSize(330, 240);
+        frame1.setSize(390, 240);
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setResizable(false);
 
@@ -96,6 +96,8 @@ public class Amortization implements ActionListener {
 
         //compound interest
         frame2 = new JFrame("Compound Interest");
+
+        convert2 = new JCheckBox("use percent");
 
         frame2.getContentPane().setBackground(Color.LIGHT_GRAY);
 
@@ -106,7 +108,7 @@ public class Amortization implements ActionListener {
         LintRate = new JLabel("interest  Rate");
 
         textFieldcomNum2 = new JTextField();
-        LcomNum = new JLabel("Compund amount");
+        LcomNum = new JLabel("Compound amount");
 
         textFieldyear2 = new JTextField();
         Lyearpay = new JLabel("Number of years");
@@ -122,6 +124,9 @@ public class Amortization implements ActionListener {
 
         textFieldintRate2.setBounds(15, 60, 175, 30);
         LintRate.setBounds(195, 60, 150, 30);
+
+        convert2.setBounds(275, 60, 150, 30);
+        convert2.setBackground(Color.LIGHT_GRAY);
 
         textFieldcomNum2.setBounds(15, 95, 175, 30);
         LcomNum.setBounds(195, 95, 150, 30);
@@ -140,6 +145,8 @@ public class Amortization implements ActionListener {
         frame2.add(textFieldintRate2);
         frame2.add(LintRate);
 
+        frame2.add(convert2);
+
         frame2.add(textFieldcomNum2);
         frame2.add(LcomNum);
 
@@ -154,7 +161,7 @@ public class Amortization implements ActionListener {
         frame2.setLocationRelativeTo(frame1);
         frame2.setLayout(null);
         frame2.setVisible(true);
-        frame2.setSize(420, 280);
+        frame2.setSize(410, 280);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setResizable(false);
 
@@ -162,9 +169,9 @@ public class Amortization implements ActionListener {
 
 
         //future value
-
-
         frame3 = new JFrame("future value");
+
+        convert3 = new JCheckBox("use percent");
 
         frame3.getContentPane().setBackground(Color.MAGENTA);
 
@@ -175,7 +182,7 @@ public class Amortization implements ActionListener {
         Lintmonth = new JLabel("Monthly payment");
 
         textFieldintrate = new JTextField();
-        Lintrate = new JLabel("Intrest rate");
+        Lintrate = new JLabel("interest Rate");
 
         textFieldcomyears = new JTextField();
         Lcomyears = new JLabel("Number of compounds");
@@ -198,6 +205,9 @@ public class Amortization implements ActionListener {
         textFieldintrate.setBounds(15, 95, 175, 30);
         Lintrate.setBounds(195, 95, 150, 30);
 
+        convert3.setBounds(270, 95, 150, 30);
+        convert3.setBackground(Color.MAGENTA);
+
         textFieldcomyears.setBounds(15, 130, 175, 30);
         Lcomyears.setBounds(195, 130, 150, 30);
 
@@ -218,6 +228,8 @@ public class Amortization implements ActionListener {
         frame3.add(textFieldintrate);
         frame3.add(Lintrate);
 
+        frame3.add(convert3);
+
         frame3.add(textFieldcomyears);
         frame3.add(Lcomyears);
 
@@ -232,7 +244,7 @@ public class Amortization implements ActionListener {
         frame3.setLocationRelativeTo(frame2);
         frame3.setLayout(null);
         frame3.setVisible(true);
-        frame3.setSize(420, 320);
+        frame3.setSize(410, 320);
         frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame3.setResizable(false);
 
@@ -246,39 +258,53 @@ public class Amortization implements ActionListener {
         if (e.getSource() == submit) {
             loanNum = Double.parseDouble(textFieldl.getText());
             monthNum = Double.parseDouble(textFieldm.getText());
-            intrestRate = Double.parseDouble(textFieldapr.getText());
+            if (convert1.isSelected()) {
+                intrestRate = Double.parseDouble(textFieldapr.getText()) / 100;
+            } else {
+                intrestRate = Double.parseDouble(textFieldapr.getText());
+            }
 
             double part1 = intrestRate * Math.pow((1 + intrestRate), monthNum);
             double part2 = Math.pow((1 + intrestRate), monthNum) - 1;
             double result = loanNum * (part1 / part2);
 
-            answer.setText("" + (float) result);
+            DecimalFormat twoDForm = new DecimalFormat("#.##");
+            answer.setText("" + Double.valueOf(twoDForm.format(result)));
         }
         if (e.getSource() == submit2) {
             CloanNum = Double.parseDouble(textFieldloan2.getText());
-            CintRate = Double.parseDouble(textFieldintRate2.getText());
+            if (convert2.isSelected()) {
+                CintRate = Double.parseDouble(textFieldintRate2.getText()) / 100;
+            } else {
+                CintRate = Double.parseDouble(textFieldintRate2.getText());
+            }
             compoundNum = Double.parseDouble(textFieldcomNum2.getText());
             yearNum = Double.parseDouble(textFieldyear2.getText());
 
             double result2 = CloanNum * Math.pow((1 + (CintRate / compoundNum)), (compoundNum * yearNum));
 
-            answer2.setText("" + (float) result2);
+            DecimalFormat twoDForm = new DecimalFormat("#.##");
+            answer2.setText("" + Double.valueOf(twoDForm.format(result2)));
         }
         if (e.getSource() == submit3) {
 
-           // Total = [ P(1+r/n)^(nt) ] + [ PMT × (((1 + r/n)^(nt) - 1) / (r/n)) ]
-
             p = Double.parseDouble(textfieldnum.getText());
             pmt = Double.parseDouble(textFieldintmonth.getText());
-            r = Double.parseDouble(textFieldintrate.getText());
+
+            if (convert3.isSelected()) {
+                r = Double.parseDouble(textFieldintrate.getText()) / 100;
+            } else {
+                r = Double.parseDouble(textFieldintrate.getText());
+            }
             n = Double.parseDouble(textFieldcomyears.getText());
             t = Double.parseDouble(textFieldinvest.getText());
 
-            double part1 = p * Math.pow((1+r/n),(n * t));
-            double part2 = pmt * (Math.pow((1 + r/n),(n * t)) - 1) / (r/n);
+            double part1 = p * Math.pow((1 + r / n), (n * t));
+            double part2 = pmt * (Math.pow((1 + r / n), (n * t)) - 1) / (r / n);
             double result3 = part1 + part2;
 
-            answer3.setText("" + (float) result3);
+            DecimalFormat twoDForm = new DecimalFormat("#.##");
+            answer3.setText("" + Double.valueOf(twoDForm.format(result3)));
         }
 
     }
@@ -289,10 +315,3 @@ public class Amortization implements ActionListener {
         new Amortization();
     }
 }
-
-
-
-
-/*
-Second equation: A = P (1 + r/n) (nt)
-*/
