@@ -29,16 +29,13 @@ public class Amortization implements ActionListener {
     static double CloanNum, CintRate, compoundNum, yearNum;
 
     //future value field
-    /*
+
     JFrame frame3;
-    JTextField textFieldloan3, textFieldintRate2, textFieldcomNum2, textFieldyear2, answer2;
-    JButton submit2;
-    JLabel LloanC, LintRate, LcomNum, Lyearpay;
+    JTextField textfieldnum, textFieldintmonth, textFieldintrate, textFieldcomyears, textFieldinvest, answer3;
+    JButton submit3;
+    JLabel Lloan3, Lintmonth, Lintrate, Lcomyears, Linvest, finalnum;
 
-    static double CloanNum, CintRate, compoundNum, yearNum;
-    */
-
-
+    static double p, pmt, r, n, t;
 
 
     Amortization() {
@@ -100,7 +97,7 @@ public class Amortization implements ActionListener {
         //compound interest
         frame2 = new JFrame("Compound Interest");
 
-        frame2.getContentPane().setBackground(Color.lightGray);
+        frame2.getContentPane().setBackground(Color.LIGHT_GRAY);
 
         textFieldloan2 = new JTextField();
         LloanC = new JLabel("Loan amount");
@@ -162,6 +159,85 @@ public class Amortization implements ActionListener {
         frame2.setResizable(false);
 
         submit2.addActionListener(this);
+
+
+        //future value
+
+
+        frame3 = new JFrame("future value");
+
+        frame3.getContentPane().setBackground(Color.MAGENTA);
+
+        textfieldnum = new JTextField();
+        Lloan3 = new JLabel("Loan amount");
+
+        textFieldintmonth = new JTextField();
+        Lintmonth = new JLabel("Monthly payment");
+
+        textFieldintrate = new JTextField();
+        Lintrate = new JLabel("Intrest rate");
+
+        textFieldcomyears = new JTextField();
+        Lcomyears = new JLabel("Number of compounds");
+
+        textFieldinvest = new JTextField();
+        Linvest = new JLabel("Time borrowed");
+
+        submit3 = new JButton("Submit");
+        answer3 = new JTextField();
+        answer3.setEditable(false);
+        finalnum = new JLabel("Future value");
+
+
+        textfieldnum.setBounds(15, 25, 175, 30);
+        Lloan3.setBounds(195, 25, 150, 30);
+
+        textFieldintmonth.setBounds(15, 60, 175, 30);
+        Lintmonth.setBounds(195, 60, 150, 30);
+
+        textFieldintrate.setBounds(15, 95, 175, 30);
+        Lintrate.setBounds(195, 95, 150, 30);
+
+        textFieldcomyears.setBounds(15, 130, 175, 30);
+        Lcomyears.setBounds(195, 130, 150, 30);
+
+        textFieldinvest.setBounds(15, 165, 175, 30);
+        Linvest.setBounds(195, 165, 150, 30);
+
+        submit3.setBounds(15, 200, 150, 30);
+        submit3.setBackground(Color.PINK);
+        answer3.setBounds(15, 235, 175, 30);
+        finalnum.setBounds(195, 235, 175, 30);
+
+        frame3.add(textfieldnum);
+        frame3.add(Lloan3);
+
+        frame3.add(textFieldintmonth);
+        frame3.add(Lintmonth);
+
+        frame3.add(textFieldintrate);
+        frame3.add(Lintrate);
+
+        frame3.add(textFieldcomyears);
+        frame3.add(Lcomyears);
+
+        frame3.add(textFieldinvest);
+        frame3.add(Linvest);
+
+        frame3.add(submit3);
+        frame3.add(answer3);
+        frame3.add(finalnum);
+
+
+        frame3.setLocationRelativeTo(frame2);
+        frame3.setLayout(null);
+        frame3.setVisible(true);
+        frame3.setSize(420, 320);
+        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame3.setResizable(false);
+
+        submit3.addActionListener(this);
+
     }
 
 
@@ -187,6 +263,22 @@ public class Amortization implements ActionListener {
             double result2 = CloanNum * Math.pow((1 + (CintRate / compoundNum)), (compoundNum * yearNum));
 
             answer2.setText("" + (float) result2);
+        }
+        if (e.getSource() == submit3) {
+
+           // Total = [ P(1+r/n)^(nt) ] + [ PMT × (((1 + r/n)^(nt) - 1) / (r/n)) ]
+
+            p = Double.parseDouble(textfieldnum.getText());
+            pmt = Double.parseDouble(textFieldintmonth.getText());
+            r = Double.parseDouble(textFieldintrate.getText());
+            n = Double.parseDouble(textFieldcomyears.getText());
+            t = Double.parseDouble(textFieldinvest.getText());
+
+            double part1 = p * Math.pow((1+r/n),(n * t));
+            double part2 = pmt * (Math.pow((1 + r/n),(n * t)) - 1) / (r/n);
+            double result3 = part1 + part2;
+
+            answer3.setText("" + (float) result3);
         }
 
     }
