@@ -11,257 +11,248 @@ public class Amortization implements ActionListener {
     static double loanNum, monthNum, intrestRate;
     static double CloanNum, CintRate, compoundNum, yearNum;
     static double p, pmt, r, n, t;
-    //amortization field
-    JFrame frame1;
-    JTextField textFieldm, textFieldl, textFieldapr, answer;
-    JButton submit;
-    JLabel Lmonths, Lloan, apr, Lmonthpay;
-    JCheckBox convert1;
-    //compound interest field
-    JFrame frame2;
-    JTextField textFieldloan2, textFieldintRate2, textFieldcomNum2, textFieldyear2, answer2;
-    JButton submit2;
-    JLabel LloanC, LintRate, LcomNum, Lyearpay;
-    JCheckBox convert2;
-    //future value field
-    JFrame frame3;
-    JTextField textfieldnum, textFieldintmonth, textFieldintrate, textFieldcomyears, textFieldinvest, answer3;
-    JButton submit3;
-    JLabel Lloan3, Lintmonth, Lintrate, Lcomyears, Linvest, finalnum;
-    JCheckBox convert3;
-
+//amortization field
+    JFrame A_frame;
+    JTextField A_textFieldMonths, A_textFieldLoan, A_textFieldIntRate, A_answer;
+    JButton A_submit;
+    JLabel A_Lmonths, A_Lloan, A_LIntRate, A_Lanswer;
+    JCheckBox A_convert;
+//compound interest field
+    JFrame CI_frame;
+    JTextField CI_textFieldLoan, CI_textFieldintRate, CI_textFieldcomNum, CI_textFieldyear, CI_answer;
+    JButton CI_submit;
+    JLabel CI_Lloan, CI_LintRate, CI_LcomNum, CI_Lyearpay;
+    JCheckBox CI_convert;
+//future value field
+    JFrame CIM_frame;
+    JTextField CIM_textfieldLoan, CIM_textFieldintmonth, CIM_textFieldintrate, CIM_textFieldcomyears, CIM_textFieldinvest, CIM_answer;
+    JButton CIM_submit;
+    JLabel CIM_Lloan, CIM_Lintmonth, CIM_Lintrate, CIM_Lcomyears, CIM_Linvest, CIM_finalnum;
+    JCheckBox CIM_convert;
 
     Amortization() {
-        frame1 = new JFrame("Amortization");
-        frame1.getContentPane().setBackground(Color.CYAN);
+        A_frame = new JFrame("Amortization");
+        A_frame.getContentPane().setBackground(Color.CYAN);
 
-        convert1 = new JCheckBox("use percent");
+        A_convert = new JCheckBox("use percent");
 
-        textFieldm = new JTextField();
-        Lmonths = new JLabel("Number of Months");
+        A_textFieldMonths = new JTextField();
+        A_Lmonths = new JLabel("Number of Months");
 
-        textFieldl = new JTextField();
-        Lloan = new JLabel("Loan amount");
+        A_textFieldLoan = new JTextField();
+        A_Lloan = new JLabel("Loan amount");
 
-        textFieldapr = new JTextField();
-        apr = new JLabel("interest  Rate");
+        A_textFieldIntRate = new JTextField();
+        A_LIntRate = new JLabel("interest  Rate");
 
-        submit = new JButton("Submit");
-        answer = new JTextField();
-        answer.setEditable(false);
-        Lmonthpay = new JLabel("Monthly payment");
+        A_submit = new JButton("Submit");
+        A_answer = new JTextField();
+        A_answer.setEditable(false);
+        A_Lanswer = new JLabel("Monthly payment");
 
+        A_textFieldLoan.setBounds(15, 25, 175, 30);
+        A_Lloan.setBounds(195, 25, 150, 30);
 
-        textFieldl.setBounds(15, 25, 175, 30);
-        Lloan.setBounds(195, 25, 150, 30);
+        A_textFieldMonths.setBounds(15, 60, 175, 30);
+        A_Lmonths.setBounds(195, 60, 150, 30);
 
-        textFieldm.setBounds(15, 60, 175, 30);
-        Lmonths.setBounds(195, 60, 150, 30);
+        A_textFieldIntRate.setBounds(15, 95, 175, 30);
+        A_LIntRate.setBounds(195, 95, 150, 30);
 
-        textFieldapr.setBounds(15, 95, 175, 30);
-        apr.setBounds(195, 95, 150, 30);
+        A_convert.setBounds(295, 95, 150, 30);
+        A_convert.setBackground(Color.CYAN);
 
-        convert1.setBounds(275, 95, 150, 30);
-        convert1.setBackground(Color.CYAN);
+        A_submit.setBounds(15, 130, 150, 30);
+        A_submit.setBackground(Color.MAGENTA);
+        A_answer.setBounds(15, 165, 175, 30);
+        A_Lanswer.setBounds(195, 165, 175, 30);
 
-        submit.setBounds(15, 130, 150, 30);
-        submit.setBackground(Color.MAGENTA);
-        answer.setBounds(15, 165, 175, 30);
-        Lmonthpay.setBounds(195, 165, 175, 30);
+        A_frame.add(A_textFieldLoan);
+        A_frame.add(A_Lloan);
 
-        frame1.add(textFieldl);
-        frame1.add(Lloan);
+        A_frame.add(A_textFieldMonths);
+        A_frame.add(A_Lmonths);
 
-        frame1.add(textFieldm);
-        frame1.add(Lmonths);
+        A_frame.add(A_textFieldIntRate);
+        A_frame.add(A_LIntRate);
 
-        frame1.add(textFieldapr);
-        frame1.add(apr);
+        A_frame.add(A_convert);
 
-        frame1.add(convert1);
+        A_frame.add(A_submit);
+        A_frame.add(A_answer);
+        A_frame.add(A_Lanswer);
 
-        frame1.add(submit);
-        frame1.add(answer);
-        frame1.add(Lmonthpay);
+        A_frame.setLocationRelativeTo(null);
+        A_frame.setLayout(null);
+        A_frame.setVisible(true);
+        A_frame.setSize(410, 240);
+        A_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        A_frame.setResizable(false);
 
-        frame1.setLocationRelativeTo(null);
-        frame1.setLayout(null);
-        frame1.setVisible(true);
-        frame1.setSize(390, 240);
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame1.setResizable(false);
-
-        submit.addActionListener(this);
-
+        A_submit.addActionListener(this);
 
         //compound interest
-        frame2 = new JFrame("Compound Interest");
+        CI_frame = new JFrame("Compound Interest");
 
-        convert2 = new JCheckBox("use percent");
+        CI_convert = new JCheckBox("use percent");
 
-        frame2.getContentPane().setBackground(Color.LIGHT_GRAY);
+        CI_frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 
-        textFieldloan2 = new JTextField();
-        LloanC = new JLabel("Loan amount");
+        CI_textFieldLoan = new JTextField();
+        CI_Lloan = new JLabel("Loan amount");
 
-        textFieldintRate2 = new JTextField();
-        LintRate = new JLabel("interest  Rate");
+        CI_textFieldintRate = new JTextField();
+        CI_LintRate = new JLabel("interest  Rate");
 
-        textFieldcomNum2 = new JTextField();
-        LcomNum = new JLabel("Compound amount");
+        CI_textFieldcomNum = new JTextField();
+        CI_LcomNum = new JLabel("Compound amount");
 
-        textFieldyear2 = new JTextField();
-        Lyearpay = new JLabel("Number of years");
+        CI_textFieldyear = new JTextField();
+        CI_Lyearpay = new JLabel("Number of years");
 
-        submit2 = new JButton("Submit");
-        answer2 = new JTextField();
-        answer2.setEditable(false);
-        Lmonthpay = new JLabel("compound interest");
+        CI_submit = new JButton("Submit");
+        CI_answer = new JTextField();
+        CI_answer.setEditable(false);
+        A_Lanswer = new JLabel("compound interest");
 
+        CI_textFieldLoan.setBounds(15, 25, 175, 30);
+        CI_Lloan.setBounds(195, 25, 150, 30);
 
-        textFieldloan2.setBounds(15, 25, 175, 30);
-        LloanC.setBounds(195, 25, 150, 30);
+        CI_textFieldintRate.setBounds(15, 60, 175, 30);
+        CI_LintRate.setBounds(195, 60, 150, 30);
 
-        textFieldintRate2.setBounds(15, 60, 175, 30);
-        LintRate.setBounds(195, 60, 150, 30);
+        CI_convert.setBounds(295, 60, 150, 30);
+        CI_convert.setBackground(Color.LIGHT_GRAY);
 
-        convert2.setBounds(275, 60, 150, 30);
-        convert2.setBackground(Color.LIGHT_GRAY);
+        CI_textFieldcomNum.setBounds(15, 95, 175, 30);
+        CI_LcomNum.setBounds(195, 95, 150, 30);
 
-        textFieldcomNum2.setBounds(15, 95, 175, 30);
-        LcomNum.setBounds(195, 95, 150, 30);
+        CI_textFieldyear.setBounds(15, 130, 175, 30);
+        CI_Lyearpay.setBounds(195, 130, 150, 30);
 
-        textFieldyear2.setBounds(15, 130, 175, 30);
-        Lyearpay.setBounds(195, 130, 150, 30);
+        CI_submit.setBounds(15, 165, 150, 30);
+        CI_submit.setBackground(Color.YELLOW);
+        CI_answer.setBounds(15, 200, 175, 30);
+        A_Lanswer.setBounds(195, 200, 175, 30);
 
-        submit2.setBounds(15, 165, 150, 30);
-        submit2.setBackground(Color.YELLOW);
-        answer2.setBounds(15, 200, 175, 30);
-        Lmonthpay.setBounds(195, 200, 175, 30);
+        CI_frame.add(CI_textFieldLoan);
+        CI_frame.add(CI_Lloan);
 
-        frame2.add(textFieldloan2);
-        frame2.add(LloanC);
+        CI_frame.add(CI_textFieldintRate);
+        CI_frame.add(CI_LintRate);
 
-        frame2.add(textFieldintRate2);
-        frame2.add(LintRate);
+        CI_frame.add(CI_convert);
 
-        frame2.add(convert2);
+        CI_frame.add(CI_textFieldcomNum);
+        CI_frame.add(CI_LcomNum);
 
-        frame2.add(textFieldcomNum2);
-        frame2.add(LcomNum);
+        CI_frame.add(CI_textFieldyear);
+        CI_frame.add(CI_Lyearpay);
 
-        frame2.add(textFieldyear2);
-        frame2.add(Lyearpay);
+        CI_frame.add(CI_submit);
+        CI_frame.add(CI_answer);
+        CI_frame.add(A_Lanswer);
 
-        frame2.add(submit2);
-        frame2.add(answer2);
-        frame2.add(Lmonthpay);
+        CI_frame.setLocationRelativeTo(A_frame);
+        CI_frame.setLayout(null);
+        CI_frame.setVisible(true);
+        CI_frame.setSize(430, 280);
+        CI_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        CI_frame.setResizable(false);
 
+        CI_submit.addActionListener(this);
 
-        frame2.setLocationRelativeTo(frame1);
-        frame2.setLayout(null);
-        frame2.setVisible(true);
-        frame2.setSize(410, 280);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame2.setResizable(false);
+        //future value (Compound Intrest with Monthly payments)
+        CIM_frame = new JFrame("future value");
 
-        submit2.addActionListener(this);
+        CIM_convert = new JCheckBox("use percent");
 
+        CIM_frame.getContentPane().setBackground(Color.MAGENTA);
 
-        //future value
-        frame3 = new JFrame("future value");
+        CIM_textfieldLoan = new JTextField();
+        CIM_Lloan = new JLabel("Loan amount");
 
-        convert3 = new JCheckBox("use percent");
+        CIM_textFieldintmonth = new JTextField();
+        CIM_Lintmonth = new JLabel("Monthly payment");
 
-        frame3.getContentPane().setBackground(Color.MAGENTA);
+        CIM_textFieldintrate = new JTextField();
+        CIM_Lintrate = new JLabel("interest Rate");
 
-        textfieldnum = new JTextField();
-        Lloan3 = new JLabel("Loan amount");
+        CIM_textFieldcomyears = new JTextField();
+        CIM_Lcomyears = new JLabel("Number of compounds");
 
-        textFieldintmonth = new JTextField();
-        Lintmonth = new JLabel("Monthly payment");
+        CIM_textFieldinvest = new JTextField();
+        CIM_Linvest = new JLabel("Time borrowed");
 
-        textFieldintrate = new JTextField();
-        Lintrate = new JLabel("interest Rate");
+        CIM_submit = new JButton("Submit");
+        CIM_answer = new JTextField();
+        CIM_answer.setEditable(false);
+        CIM_finalnum = new JLabel("Future value");
 
-        textFieldcomyears = new JTextField();
-        Lcomyears = new JLabel("Number of compounds");
+        CIM_textfieldLoan.setBounds(15, 25, 175, 30);
+        CIM_Lloan.setBounds(195, 25, 150, 30);
 
-        textFieldinvest = new JTextField();
-        Linvest = new JLabel("Time borrowed");
+        CIM_textFieldintmonth.setBounds(15, 60, 175, 30);
+        CIM_Lintmonth.setBounds(195, 60, 150, 30);
 
-        submit3 = new JButton("Submit");
-        answer3 = new JTextField();
-        answer3.setEditable(false);
-        finalnum = new JLabel("Future value");
+        CIM_textFieldintrate.setBounds(15, 95, 175, 30);
+        CIM_Lintrate.setBounds(195, 95, 150, 30);
 
+        CIM_convert.setBounds(290, 95, 150, 30);
+        CIM_convert.setBackground(Color.MAGENTA);
 
-        textfieldnum.setBounds(15, 25, 175, 30);
-        Lloan3.setBounds(195, 25, 150, 30);
+        CIM_textFieldcomyears.setBounds(15, 130, 175, 30);
+        CIM_Lcomyears.setBounds(195, 130, 175, 30);
 
-        textFieldintmonth.setBounds(15, 60, 175, 30);
-        Lintmonth.setBounds(195, 60, 150, 30);
+        CIM_textFieldinvest.setBounds(15, 165, 175, 30);
+        CIM_Linvest.setBounds(195, 165, 150, 30);
 
-        textFieldintrate.setBounds(15, 95, 175, 30);
-        Lintrate.setBounds(195, 95, 150, 30);
+        CIM_submit.setBounds(15, 200, 150, 30);
+        CIM_submit.setBackground(Color.PINK);
+        CIM_answer.setBounds(15, 235, 175, 30);
+        CIM_finalnum.setBounds(195, 235, 175, 30);
 
-        convert3.setBounds(270, 95, 150, 30);
-        convert3.setBackground(Color.MAGENTA);
+        CIM_frame.add(CIM_textfieldLoan);
+        CIM_frame.add(CIM_Lloan);
 
-        textFieldcomyears.setBounds(15, 130, 175, 30);
-        Lcomyears.setBounds(195, 130, 150, 30);
+        CIM_frame.add(CIM_textFieldintmonth);
+        CIM_frame.add(CIM_Lintmonth);
 
-        textFieldinvest.setBounds(15, 165, 175, 30);
-        Linvest.setBounds(195, 165, 150, 30);
+        CIM_frame.add(CIM_textFieldintrate);
+        CIM_frame.add(CIM_Lintrate);
 
-        submit3.setBounds(15, 200, 150, 30);
-        submit3.setBackground(Color.PINK);
-        answer3.setBounds(15, 235, 175, 30);
-        finalnum.setBounds(195, 235, 175, 30);
+        CIM_frame.add(CIM_convert);
 
-        frame3.add(textfieldnum);
-        frame3.add(Lloan3);
+        CIM_frame.add(CIM_textFieldcomyears);
+        CIM_frame.add(CIM_Lcomyears);
 
-        frame3.add(textFieldintmonth);
-        frame3.add(Lintmonth);
+        CIM_frame.add(CIM_textFieldinvest);
+        CIM_frame.add(CIM_Linvest);
 
-        frame3.add(textFieldintrate);
-        frame3.add(Lintrate);
+        CIM_frame.add(CIM_submit);
+        CIM_frame.add(CIM_answer);
+        CIM_frame.add(CIM_finalnum);
 
-        frame3.add(convert3);
+        CIM_frame.setLocationRelativeTo(CI_frame);
+        CIM_frame.setLayout(null);
+        CIM_frame.setVisible(true);
+        CIM_frame.setSize(430, 320);
+        CIM_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        CIM_frame.setResizable(false);
 
-        frame3.add(textFieldcomyears);
-        frame3.add(Lcomyears);
-
-        frame3.add(textFieldinvest);
-        frame3.add(Linvest);
-
-        frame3.add(submit3);
-        frame3.add(answer3);
-        frame3.add(finalnum);
-
-
-        frame3.setLocationRelativeTo(frame2);
-        frame3.setLayout(null);
-        frame3.setVisible(true);
-        frame3.setSize(410, 320);
-        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame3.setResizable(false);
-
-        submit3.addActionListener(this);
+        CIM_submit.addActionListener(this);
 
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == submit) {
-            loanNum = Double.parseDouble(textFieldl.getText());
-            monthNum = Double.parseDouble(textFieldm.getText());
-            if (convert1.isSelected()) {
-                intrestRate = Double.parseDouble(textFieldapr.getText()) / 100;
+        if (e.getSource() == A_submit) {
+            loanNum = Double.parseDouble(A_textFieldLoan.getText());
+            monthNum = Double.parseDouble(A_textFieldMonths.getText());
+            if (A_convert.isSelected()) {
+                intrestRate = Double.parseDouble(A_textFieldIntRate.getText()) / 100;
             } else {
-                intrestRate = Double.parseDouble(textFieldapr.getText());
+                intrestRate = Double.parseDouble(A_textFieldIntRate.getText());
             }
 
             double part1 = intrestRate * Math.pow((1 + intrestRate), monthNum);
@@ -269,46 +260,45 @@ public class Amortization implements ActionListener {
             double result = loanNum * (part1 / part2);
 
             DecimalFormat twoDForm = new DecimalFormat("#.##");
-            answer.setText("" + Double.valueOf(twoDForm.format(result)));
+            A_answer.setText("" + Double.valueOf(twoDForm.format(result)));
         }
-        if (e.getSource() == submit2) {
-            CloanNum = Double.parseDouble(textFieldloan2.getText());
-            if (convert2.isSelected()) {
-                CintRate = Double.parseDouble(textFieldintRate2.getText()) / 100;
+        if (e.getSource() == CI_submit) {
+            CloanNum = Double.parseDouble(CI_textFieldLoan.getText());
+            if (CI_convert.isSelected()) {
+                CintRate = Double.parseDouble(CI_textFieldintRate.getText()) / 100;
             } else {
-                CintRate = Double.parseDouble(textFieldintRate2.getText());
+                CintRate = Double.parseDouble(CI_textFieldintRate.getText());
             }
-            compoundNum = Double.parseDouble(textFieldcomNum2.getText());
-            yearNum = Double.parseDouble(textFieldyear2.getText());
+            compoundNum = Double.parseDouble(CI_textFieldcomNum.getText());
+            yearNum = Double.parseDouble(CI_textFieldyear.getText());
 
             double result2 = CloanNum * Math.pow((1 + (CintRate / compoundNum)), (compoundNum * yearNum));
 
             DecimalFormat twoDForm = new DecimalFormat("#.##");
-            answer2.setText("" + Double.valueOf(twoDForm.format(result2)));
+            CI_answer.setText("" + Double.valueOf(twoDForm.format(result2)));
         }
-        if (e.getSource() == submit3) {
+        if (e.getSource() == CIM_submit) {
 
-            p = Double.parseDouble(textfieldnum.getText());
-            pmt = Double.parseDouble(textFieldintmonth.getText());
+            p = Double.parseDouble(CIM_textfieldLoan.getText());
+            pmt = Double.parseDouble(CIM_textFieldintmonth.getText());
 
-            if (convert3.isSelected()) {
-                r = Double.parseDouble(textFieldintrate.getText()) / 100;
+            if (CIM_convert.isSelected()) {
+                r = Double.parseDouble(CIM_textFieldintrate.getText()) / 100;
             } else {
-                r = Double.parseDouble(textFieldintrate.getText());
+                r = Double.parseDouble(CIM_textFieldintrate.getText());
             }
-            n = Double.parseDouble(textFieldcomyears.getText());
-            t = Double.parseDouble(textFieldinvest.getText());
+            n = Double.parseDouble(CIM_textFieldcomyears.getText());
+            t = Double.parseDouble(CIM_textFieldinvest.getText());
 
             double part1 = p * Math.pow((1 + r / n), (n * t));
             double part2 = pmt * (Math.pow((1 + r / n), (n * t)) - 1) / (r / n);
             double result3 = part1 + part2;
 
             DecimalFormat twoDForm = new DecimalFormat("#.##");
-            answer3.setText("" + Double.valueOf(twoDForm.format(result3)));
+            CIM_answer.setText("" + Double.valueOf(twoDForm.format(result3)));
         }
 
     }
-
 
     public static void main(String... s) {
 
